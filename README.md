@@ -1,36 +1,116 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# College Prep Academy - Comprehensive College Preparation Platform
 
-## Getting Started
+A modern, full-stack web application for college preparation courses built with Next.js 15, TypeScript, and Tailwind CSS.
 
-First, run the development server:
+## 🚀 Features
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+### Core Functionality
+- **User Authentication**: Secure login/registration for students and employees using NextAuth.js
+- **Role-based Access**: Different interfaces for students, instructors, and administrators
+- **Course Management**: Comprehensive course catalog with enrollment capabilities
+- **Scheduling & Attendance**: Class scheduling and attendance tracking system
+- **Virtual Classrooms**: Online learning environment with document sharing
+- **Real-time Chat**: Interactive chat rooms for course discussions
+- **Document Management**: Upload and share course materials and resources
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+### User Types
+- **Students**: Access courses, view schedules, participate in discussions, track progress
+- **Instructors**: Manage courses, track attendance, share materials, communicate with students
+- **Administrators**: Full system access, user management, course administration
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+### Key Pages
+- **Homepage**: Attractive landing page with features and testimonials
+- **About Us**: Company information, team, mission, and values
+- **Contact Us**: Contact form with FAQ and office information
+- **Courses**: Comprehensive course catalog with filtering and details
+- **Dashboard**: Personalized user dashboard with quick actions and progress tracking
+- **Authentication**: Secure sign-in/sign-up with multiple providers
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## 🛠 Technology Stack
 
-## Learn More
+### Frontend
+- **Next.js 15** - React framework with App Router
+- **TypeScript** - Type-safe JavaScript
+- **Tailwind CSS** - Utility-first CSS framework
+- **Heroicons** - Beautiful SVG icons
+- **React Hook Form** - Form handling and validation
 
-To learn more about Next.js, take a look at the following resources:
+### Backend & Database
+- **Prisma** - Database ORM
+- **PostgreSQL** - Primary database
+- **NextAuth.js** - Authentication system
+- **bcryptjs** - Password hashing
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+### Real-time Features
+- **Socket.io** - Real-time chat functionality (configured for future integration)
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+### State Management & Data Fetching
+- **React Query** - Server state management
+- **React Context** - Client state management
 
-## Deploy on Vercel
+## 🚀 Getting Started
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+### Prerequisites
+- Node.js 18+ 
+- PostgreSQL database
+- npm or yarn package manager
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+### Installation
+
+1. **Clone the repository**
+   ```bash
+   git clone <repository-url>
+   cd college-prep-academy
+   ```
+
+2. **Install dependencies**
+   ```bash
+   npm install
+   ```
+
+3. **Set up environment variables**
+   Copy `.env.local` and update with your values:
+   ```bash
+   # Database
+   DATABASE_URL="postgresql://username:password@localhost:5432/college_prep_db"
+   
+   # NextAuth.js
+   NEXTAUTH_SECRET="your-nextauth-secret-key-here"
+   NEXTAUTH_URL="http://localhost:3000"
+   
+   # OAuth Providers (optional)
+   GOOGLE_CLIENT_ID=""
+   GOOGLE_CLIENT_SECRET=""
+   ```
+
+4. **Set up the database**
+   ```bash
+   # Generate Prisma client
+   npx prisma generate
+   
+   # Run database migrations
+   npx prisma db push
+   
+   # (Optional) Seed the database
+   npx prisma db seed
+   ```
+
+5. **Start the development server**
+   ```bash
+   npm run dev
+   ```
+
+6. **Open your browser**
+   Navigate to [http://localhost:3000](http://localhost:3000)
+
+## 📝 Available Scripts
+
+- `npm run dev` - Start development server
+- `npm run build` - Build for production
+- `npm run start` - Start production server
+- `npm run lint` - Run ESLint
+- `npx prisma studio` - Open Prisma Studio (database GUI)
+- `npx prisma generate` - Generate Prisma client
+- `npx prisma db push` - Push schema changes to database
+
+Built with ❤️ for educational excellence
