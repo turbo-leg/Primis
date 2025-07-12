@@ -207,7 +207,7 @@ export default function Home() {
                 ))}
               </div>
             </div>
-            <p className="text-white/60 mb-12">Trusted by thousands of students worldwide</p>
+            <p className="text-white/60 mb-12">{t('home.trustedBy')}</p>
             
             <div className="flex flex-col sm:flex-row gap-6 justify-center mb-16">
               <button 
@@ -247,10 +247,10 @@ export default function Home() {
         <div className="max-w-7xl mx-auto px-4">
           <div className={`transition-all duration-1500 ${visibleSections.has('stats') ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-12'}`}>
             <h2 className="text-4xl md:text-5xl font-bold text-center text-white mb-4">
-              Our Impact
+              {t('home.ourImpact')}
             </h2>
             <p className="text-xl text-white/70 text-center mb-16 max-w-3xl mx-auto">
-              Numbers that speak to our commitment to excellence
+              {t('home.impactSubtitle')}
             </p>
           </div>
           
@@ -308,7 +308,7 @@ export default function Home() {
                 className="group bg-gradient-to-r from-blue-500 to-purple-600 hover:from-blue-600 hover:to-purple-700 text-white px-10 py-4 rounded-2xl text-lg font-semibold transition-all duration-300 transform hover:scale-105"
               >
                 <span className="flex items-center">
-                  Discover Our Values
+                  {t('home.discoverValues')}
                   <ArrowRightIcon className="ml-2 h-5 w-5 group-hover:translate-x-2 transition-transform duration-300" />
                 </span>
               </button>
@@ -482,7 +482,7 @@ export default function Home() {
                 onClick={() => scrollToSection(contactRef)}
                 className="bg-gradient-to-r from-blue-500 via-purple-500 to-red-500 hover:from-blue-600 hover:via-purple-600 hover:to-red-600 text-white px-16 py-6 rounded-full text-xl font-bold transition-all duration-500 transform hover:scale-110 hover:shadow-2xl shadow-lg animate-pulse"
               >
-                Join Our Success Story
+                {t('home.joinSuccessStory')}
               </button>
             </div>
           </div>
@@ -497,10 +497,10 @@ export default function Home() {
         <div className="max-w-7xl mx-auto px-4">
           <div className={`text-center mb-16 transition-all duration-2000 ${visibleSections.has('contact') ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-12'}`}>
             <h2 className="text-5xl md:text-6xl font-bold text-white mb-8 bg-gradient-to-r from-red-400 to-pink-400 bg-clip-text text-transparent">
-              Get in Touch
+              {t('home.getInTouch')}
             </h2>
             <p className="text-xl text-gray-300 max-w-3xl mx-auto">
-              Ready to start your journey to academic excellence? Contact us today.
+              {t('home.getInTouchSubtitle')}
             </p>
           </div>
 
@@ -515,7 +515,7 @@ export default function Home() {
                   <div>
                     <div className="text-white text-3xl font-bold">7200-2220</div>
                     <div className="text-white text-3xl font-bold">9032-2200</div>
-                    <div className="text-white/60 text-lg mt-2">Call us anytime</div>
+                    <div className="text-white/60 text-lg mt-2">{t('home.callAnytime')}</div>
                   </div>
                 </div>
 
@@ -527,17 +527,17 @@ export default function Home() {
                     <div className="text-white text-xl font-medium">
                       СБД, 1-р хороо, Соёмбо Тауэр 202 тоот
                     </div>
-                    <div className="text-white/60 text-lg mt-2">Visit our campus</div>
+                    <div className="text-white/60 text-lg mt-2">{t('home.visitCampus')}</div>
                   </div>
                 </div>
               </div>
 
               <div className="text-center">
-                <h4 className="text-white text-3xl font-bold mb-8">Ready to Start Your Journey?</h4>
+                <h4 className="text-white text-3xl font-bold mb-8">{t('home.readyQuestion')}</h4>
                 <button className="bg-gradient-to-r from-red-500 via-red-600 to-red-700 hover:from-red-600 hover:via-red-700 hover:to-red-800 text-white px-16 py-6 rounded-3xl text-2xl font-bold transition-all duration-500 transform hover:scale-110 hover:shadow-2xl shadow-lg animate-pulse mb-6">
-                  Энгийн тоог холбогдох
+                  {t('home.contactButton')}
                 </button>
-                <p className="text-white/60 text-lg">Free consultation available</p>
+                <p className="text-white/60 text-lg">{t('home.freeConsultation')}</p>
                 
                 <div className="mt-8 flex justify-center">
                   <div className="flex items-center space-x-2">
@@ -546,7 +546,7 @@ export default function Home() {
                     ))}
                   </div>
                 </div>
-                <p className="text-white/60 mt-2">Join thousands of successful students</p>
+                <p className="text-white/60 mt-2">{t('home.joinThousands')}</p>
               </div>
             </div>
           </div>
