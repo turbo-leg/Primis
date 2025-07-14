@@ -43,7 +43,17 @@ export async function POST(request: NextRequest) {
 
     console.log('✅ File validation passed')
 
-    // Create uploads directory if it doesn't exist
+    // For production deployment, we can't use local file storage
+    // Return an error suggesting to use Cloudinary instead
+    if (process.env.NODE_ENV === 'production' || process.env.VERCEL) {
+      console.log('❌ Local storage not available in production')
+      return NextResponse.json({ 
+        error: 'Local image storage is not available in production. Please configure Cloudinary for image uploads.',
+        details: 'Cloudinary configuration is required for profile image uploads in production environment.'
+      }, { status: 500 })
+    }
+
+    // Create uploads directory if it doesn't exist (development only)
     const uploadsDir = path.join(process.cwd(), 'public', 'uploads', 'profile-images')
     try {
       await mkdir(uploadsDir, { recursive: true })

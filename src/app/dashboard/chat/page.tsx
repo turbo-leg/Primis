@@ -3,6 +3,7 @@
 import { useState, useEffect, useRef } from 'react'
 import { useSession } from 'next-auth/react'
 import Image from 'next/image'
+import { getProfileImageUrl } from '@/lib/images'
 import { 
   UserGroupIcon, 
   ChatBubbleLeftEllipsisIcon,
@@ -11,6 +12,52 @@ import {
   XMarkIcon,
   TrashIcon
 } from '@heroicons/react/24/outline'
+
+// Image component with fallback
+const ProfileImage = ({ 
+  src, 
+  alt, 
+  width, 
+  height, 
+  className 
+}: { 
+  src?: string; 
+  alt: string; 
+  width: number; 
+  height: number; 
+  className?: string;
+}) => {
+  const [imageError, setImageError] = useState(false)
+  const processedSrc = getProfileImageUrl(src)
+  const [imageSrc, setImageSrc] = useState(processedSrc)
+
+  useEffect(() => {
+    const newSrc = getProfileImageUrl(src)
+    setImageSrc(newSrc)
+    setImageError(false)
+  }, [src])
+
+  const handleImageError = () => {
+    console.log('Image failed to load:', imageSrc)
+    setImageError(true)
+  }
+
+  if (!imageSrc || imageError) {
+    return <UserCircleIcon className={className || `w-${width/4} h-${height/4} text-gray-400`} />
+  }
+
+  return (
+    <Image
+      src={imageSrc}
+      alt={alt}
+      width={width}
+      height={height}
+      className={className}
+      onError={handleImageError}
+      unoptimized={imageSrc.startsWith('/uploads')} // Disable optimization for local uploads
+    />
+  )
+}
 
 interface Message {
   id: string
@@ -339,17 +386,13 @@ export default function ChatPage() {
                           onClick={() => handleUserClick(message.user)}
                           className="flex-shrink-0 hover:opacity-80 transition-opacity"
                         >
-                          {message.user.image ? (
-                            <Image
-                              src={message.user.image}
-                              alt={message.user.name}
-                              width={32}
-                              height={32}
-                              className="w-8 h-8 rounded-full object-cover cursor-pointer"
-                            />
-                          ) : (
-                            <UserCircleIcon className="w-8 h-8 text-gray-400 cursor-pointer" />
-                          )}
+                          <ProfileImage
+                            src={message.user.image}
+                            alt={message.user.name}
+                            width={32}
+                            height={32}
+                            className="w-8 h-8 rounded-full object-cover cursor-pointer"
+                          />
                         </button>
                       )}
 
@@ -406,17 +449,13 @@ export default function ChatPage() {
                       {/* Profile Image for current user (right side) */}
                       {message.user.id === session?.user?.id && (
                         <div className="flex-shrink-0">
-                          {message.user.image ? (
-                            <Image
-                              src={message.user.image}
-                              alt={message.user.name || 'You'}
-                              width={32}
-                              height={32}
-                              className="w-8 h-8 rounded-full object-cover"
-                            />
-                          ) : (
-                            <UserCircleIcon className="w-8 h-8 text-gray-400" />
-                          )}
+                          <ProfileImage
+                            src={message.user.image}
+                            alt={message.user.name || 'You'}
+                            width={32}
+                            height={32}
+                            className="w-8 h-8 rounded-full object-cover"
+                          />
                         </div>
                       )}
                     </div>
@@ -503,17 +542,13 @@ export default function ChatPage() {
                       onClick={() => handleUserClick(participant)}
                       className="w-full text-left p-3 hover:bg-gray-50 flex items-center space-x-3"
                     >
-                      {participant.image ? (
-                        <Image
-                          src={participant.image}
-                          alt={participant.name}
-                          width={32}
-                          height={32}
-                          className="w-8 h-8 rounded-full object-cover flex-shrink-0"
-                        />
-                      ) : (
-                        <UserCircleIcon className="w-8 h-8 text-gray-400 flex-shrink-0" />
-                      )}
+                      <ProfileImage
+                        src={participant.image}
+                        alt={participant.name}
+                        width={32}
+                        height={32}
+                        className="w-8 h-8 rounded-full object-cover flex-shrink-0"
+                      />
                       
                       <div className="flex-1 min-w-0">
                         <div className="font-medium text-gray-900 truncate">
@@ -574,17 +609,13 @@ export default function ChatPage() {
 
             {/* Profile Content */}
             <div className="flex flex-col items-center">
-              {selectedUserProfile.image ? (
-                <Image
-                  src={selectedUserProfile.image}
-                  alt={selectedUserProfile.name}
-                  width={80}
-                  height={80}
-                  className="w-20 h-20 rounded-full object-cover border-4 border-gray-200"
-                />
-              ) : (
-                <UserCircleIcon className="w-20 h-20 text-gray-400" />
-              )}
+              <ProfileImage
+                src={selectedUserProfile.image}
+                alt={selectedUserProfile.name}
+                width={80}
+                height={80}
+                className="w-20 h-20 rounded-full object-cover border-4 border-gray-200"
+              />
               
               <h2 className="mt-4 text-xl font-semibold text-gray-900">
                 {selectedUserProfile.name}

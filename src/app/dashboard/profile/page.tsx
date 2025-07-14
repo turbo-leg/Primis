@@ -3,6 +3,7 @@
 import { useState, useEffect, useRef } from 'react'
 import { useSession } from 'next-auth/react'
 import { useTranslation } from '@/components/providers/i18n-provider'
+import { getProfileImageUrl } from '@/lib/images'
 import { 
   UserCircleIcon, 
   CameraIcon, 
@@ -209,13 +210,18 @@ export default function ProfilePage() {
           {/* Profile Image Section */}
           <div className="flex items-center space-x-6 mb-8">
             <div className="relative">
-              {profile?.image ? (
+              {profile && getProfileImageUrl(profile.image) ? (
                 <Image
-                  src={profile.image}
+                  src={getProfileImageUrl(profile.image)!}
                   alt="Profile"
                   width={120}
                   height={120}
                   className="w-30 h-30 rounded-full object-cover border-4 border-gray-200"
+                  onError={(e) => {
+                    console.log('Profile image failed to load:', profile?.image)
+                    // Hide the image on error
+                    e.currentTarget.style.display = 'none'
+                  }}
                 />
               ) : (
                 <UserCircleIcon className="w-30 h-30 text-gray-400" />
