@@ -35,6 +35,7 @@ export function Navigation() {
     { href: '/schedule', label: t('nav.schedule'), icon: CalendarIcon },
     { href: '/dashboard/chat', label: t('nav.chat'), icon: ChatBubbleLeftRightIcon },
     { href: '/documents', label: t('nav.documents'), icon: DocumentTextIcon },
+    { href: '/dashboard/profile', label: t('nav.profile'), icon: UserIcon },
   ]
 
   return (

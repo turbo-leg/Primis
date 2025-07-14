@@ -57,7 +57,8 @@ export async function GET(
           select: {
             id: true,
             name: true,
-            role: true
+            role: true,
+            image: true
           }
         }
       },
@@ -74,7 +75,8 @@ export async function GET(
       user: {
         id: message.user.id,
         name: message.user.name || 'Unknown User',
-        role: message.user.role
+        role: message.user.role,
+        image: message.user.image
       },
       chatRoomId: message.chatRoomId,
       createdAt: message.createdAt.toISOString()
@@ -116,7 +118,8 @@ export async function POST(
           select: {
             id: true,
             name: true,
-            role: true
+            role: true,
+            image: true
           }
         }
       }
@@ -129,7 +132,8 @@ export async function POST(
       user: {
         id: message.user.id,
         name: message.user.name || 'Unknown User',
-        role: message.user.role
+        role: message.user.role,
+        image: message.user.image
       },
       chatRoomId: message.chatRoomId,
       createdAt: message.createdAt.toISOString()
