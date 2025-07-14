@@ -136,13 +136,19 @@ export async function POST(request: NextRequest) {
     })
 
     // Create a chat room for this course
-    await prisma.chatRoom.create({
-      data: {
-        name: `${course.title} - Discussion`,
-        courseId: course.id,
-        isPublic: false
-      }
-    })
+    try {
+      await prisma.chatRoom.create({
+        data: {
+          name: `${course.title} - Discussion`,
+          courseId: course.id,
+          isPublic: false
+        }
+      })
+      console.log(`✅ Chat room created for course: ${course.title}`)
+    } catch (chatRoomError) {
+      console.error('Error creating chat room:', chatRoomError)
+      // Don't fail the course creation if chat room creation fails
+    }
 
     const formattedCourse = {
       id: course.id,

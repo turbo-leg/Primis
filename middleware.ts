@@ -11,7 +11,6 @@ export default withAuth(
         if (
           req.nextUrl.pathname.startsWith('/auth') ||
           req.nextUrl.pathname === '/' ||
-          req.nextUrl.pathname.startsWith('/about') ||
           req.nextUrl.pathname.startsWith('/contact') ||
           req.nextUrl.pathname.startsWith('/courses') ||
           req.nextUrl.pathname.startsWith('/api/auth') ||

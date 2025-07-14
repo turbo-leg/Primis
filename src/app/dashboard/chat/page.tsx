@@ -36,6 +36,7 @@ export default function ChatPage() {
   const [activeRoom, setActiveRoom] = useState<string | null>(null)
   const [newMessage, setNewMessage] = useState('')
   const [loading, setLoading] = useState(true)
+  const [sending, setSending] = useState(false)
   const messagesEndRef = useRef<HTMLDivElement>(null)
 
   useEffect(() => {
@@ -83,7 +84,11 @@ export default function ChatPage() {
   }
 
   const sendMessage = async () => {
-    if (!newMessage.trim() || !activeRoom) return
+    if (!newMessage.trim() || !activeRoom || sending) return
+
+    setSending(true)
+    const messageContent = newMessage.trim()
+    setNewMessage('') // Clear input immediately to prevent double submission
 
     try {
       const response = await fetch(`/api/chat/rooms/${activeRoom}/messages`, {
@@ -92,19 +97,24 @@ export default function ChatPage() {
           'Content-Type': 'application/json',
         },
         body: JSON.stringify({
-          content: newMessage.trim()
+          content: messageContent
         }),
       })
 
       if (response.ok) {
-        setNewMessage('')
         // Refresh messages
         await fetchMessages(activeRoom)
       } else {
         console.error('Failed to send message')
+        // Restore message if failed
+        setNewMessage(messageContent)
       }
     } catch (error) {
       console.error('Error sending message:', error)
+      // Restore message if failed
+      setNewMessage(messageContent)
+    } finally {
+      setSending(false)
     }
   }
 
@@ -226,23 +236,35 @@ export default function ChatPage() {
 
               {/* Message Input */}
               <div className="border-t border-gray-200 p-4">
-                <div className="flex space-x-2">
+                <form 
+                  onSubmit={(e) => {
+                    e.preventDefault()
+                    if (!sending) {
+                      sendMessage()
+                    }
+                  }} 
+                  className="flex space-x-2"
+                >
                   <input
                     type="text"
                     value={newMessage}
                     onChange={(e) => setNewMessage(e.target.value)}
-                    onKeyPress={(e) => e.key === 'Enter' && sendMessage()}
                     placeholder="Type your message..."
-                    className="flex-1 px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                    disabled={sending}
+                    className="flex-1 px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 disabled:opacity-50 disabled:cursor-not-allowed"
                   />
                   <button
-                    onClick={sendMessage}
-                    disabled={!newMessage.trim()}
-                    className="px-4 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700 disabled:opacity-50 disabled:cursor-not-allowed"
+                    type="submit"
+                    disabled={!newMessage.trim() || sending}
+                    className="px-4 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700 disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center min-w-[60px]"
                   >
-                    <PaperAirplaneIcon className="h-5 w-5" />
+                    {sending ? (
+                      <div className="animate-spin rounded-full h-4 w-4 border-b-2 border-white"></div>
+                    ) : (
+                      <PaperAirplaneIcon className="h-5 w-5" />
+                    )}
                   </button>
-                </div>
+                </form>
               </div>
             </>
           ) : (

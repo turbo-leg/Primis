@@ -11,49 +11,84 @@ export async function GET() {
       return NextResponse.json({ error: 'Unauthorized' }, { status: 401 })
     }
 
-    // Get chat rooms user has access to based on their enrollments
-    const chatRooms = await prisma.chatRoom.findMany({
-      where: {
-        OR: [
-          { isPublic: true },
-          {
-            course: {
-              enrollments: {
-                some: {
-                  userId: session.user.id,
-                  status: 'ACTIVE'
+    let chatRooms;
+
+    if (session.user.role === 'ADMIN' || session.user.role === 'INSTRUCTOR') {
+      // Admins and instructors can see all chat rooms
+      chatRooms = await prisma.chatRoom.findMany({
+        include: {
+          course: {
+            select: {
+              id: true,
+              title: true,
+              instructor: true,
+              _count: {
+                select: {
+                  enrollments: {
+                    where: {
+                      status: 'ACTIVE'
+                    }
+                  }
                 }
               }
             }
+          },
+          _count: {
+            select: {
+              messages: true
+            }
           }
-        ]
-      },
-      include: {
-        course: {
-          select: {
-            id: true,
-            title: true,
-            _count: {
-              select: {
+        },
+        orderBy: {
+          name: 'asc'
+        }
+      })
+    } else {
+      // Students can only see public rooms and rooms for courses they're enrolled in
+      chatRooms = await prisma.chatRoom.findMany({
+        where: {
+          OR: [
+            { isPublic: true },
+            {
+              course: {
                 enrollments: {
-                  where: {
+                  some: {
+                    userId: session.user.id,
                     status: 'ACTIVE'
                   }
                 }
               }
             }
+          ]
+        },
+        include: {
+          course: {
+            select: {
+              id: true,
+              title: true,
+              instructor: true,
+              _count: {
+                select: {
+                  enrollments: {
+                    where: {
+                      status: 'ACTIVE'
+                    }
+                  }
+                }
+              }
+            }
+          },
+          _count: {
+            select: {
+              messages: true
+            }
           }
         },
-        _count: {
-          select: {
-            messages: true
-          }
+        orderBy: {
+          name: 'asc'
         }
-      },
-      orderBy: {
-        name: 'asc'
-      }
-    })
+      })
+    }
 
     // Format rooms with proper data
     const roomsWithStats = chatRooms.map(room => ({
@@ -63,7 +98,8 @@ export async function GET() {
       isPublic: room.isPublic,
       course: room.course ? {
         id: room.course.id,
-        title: room.course.title
+        title: room.course.title,
+        instructor: room.course.instructor
       } : null,
       memberCount: room.course?._count?.enrollments || 0,
       messageCount: room._count.messages

@@ -6,7 +6,6 @@ import { useTranslation } from '@/components/providers/i18n-provider'
 import { LanguageSwitcher } from '@/components/ui/language-switcher'
 import {
   HomeIcon,
-  InformationCircleIcon,
   BookOpenIcon,
   PhoneIcon,
   Squares2X2Icon,
@@ -27,7 +26,6 @@ export function Navigation() {
 
   const navLinks = [
     { href: '/', label: t('nav.home'), icon: HomeIcon, public: true },
-    { href: '/about', label: t('nav.about'), icon: InformationCircleIcon, public: true },
     { href: '/courses', label: t('nav.courses'), icon: BookOpenIcon, public: true },
     { href: '/contact', label: t('nav.contact'), icon: PhoneIcon, public: true },
   ]

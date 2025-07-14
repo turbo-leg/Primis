@@ -7,7 +7,6 @@ const filesToFix = [
   'src/app/dashboard/page.tsx',
   'src/app/courses/page.tsx',
   'src/app/contact/page.tsx',
-  'src/app/about/page.tsx',
   'src/app/page.tsx',
   'src/components/ui/navigation.tsx'
 ]

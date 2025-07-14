@@ -1,5 +1,24 @@
 # Deployment Guide
 
+## Quick Fix for "Table does not exist" Error
+
+If you're getting the error `The table 'public.User' does not exist`, follow these steps:
+
+1. **Run this command locally with your production database URL:**
+   ```bash
+   export DATABASE_URL="postgres://b42488a47caa0312027854de6855e887a1fb5f004dcf758f128a4ac6e41c40a6:sk_JX-J3bCnDFJYAtzVzCpk9@db.prisma.io:5432/?sslmode=require"
+   npx prisma migrate deploy
+   npm run db:seed
+   ```
+
+2. **Or use the setup script:**
+   ```bash
+   chmod +x scripts/setup-production-db.sh
+   ./scripts/setup-production-db.sh "postgres://b42488a47caa0312027854de6855e887a1fb5f004dcf758f128a4ac6e41c40a6:sk_JX-J3bCnDFJYAtzVzCpk9@db.prisma.io:5432/?sslmode=require"
+   ```
+
+---
+
 ## Setting up Database for Vercel Deployment
 
 Since Vercel uses serverless functions with read-only file systems, SQLite databases don't work in production. You need to use a cloud database.
@@ -116,6 +135,67 @@ NEXTAUTH_URL = https://yourapp.vercel.app
 2. **Run database migrations** by adding a script or running them manually
 
 ## Troubleshooting
+
+### Database Tables Don't Exist Error
+If you get an error like "The table `public.User` does not exist", you need to run database migrations:
+
+**Option 1: Run migrations locally (Recommended)**
+```bash
+# Set your production DATABASE_URL temporarily
+export DATABASE_URL="postgres://your-database-url-here"
+
+# Deploy migrations to create tables
+npx prisma migrate deploy
+
+# Seed the database with sample data
+npm run db:seed
+```
+
+**Option 2: Use the setup script**
+```bash
+# Make the script executable
+chmod +x scripts/setup-production-db.sh
+
+# Run the setup script with your database URL
+./scripts/setup-production-db.sh "postgres://your-database-url-here"
+```
+
+**Option 3: Use Prisma Studio (Visual Editor)**
+```bash
+# Set your production database URL
+export DATABASE_URL="postgres://b42488a47caa0312027854de6855e887a1fb5f004dcf758f128a4ac6e41c40a6:sk_JX-J3bCnDFJYAtzVzCpk9@db.prisma.io:5432/?sslmode=require"
+
+# Open Prisma Studio to manage your database visually
+npx prisma studio
+```
+This will open a web interface where you can:
+- View your database schema
+- Create tables manually
+- Add sample data through the UI
+- Browse and edit existing data
+
+**Option 4: Prisma DB Push (Quick Setup)**
+```bash
+# Set your production database URL
+export DATABASE_URL="postgres://b42488a47caa0312027854de6855e887a1fb5f004dcf758f128a4ac6e41c40a6:sk_JX-J3bCnDFJYAtzVzCpk9@db.prisma.io:5432/?sslmode=require"
+
+# Push your schema directly to the database (creates tables)
+npx prisma db push
+
+# Seed the database with sample data
+npm run db:seed
+```
+
+**Option 5: Reset and Recreate Everything**
+```bash
+# Set your production database URL
+export DATABASE_URL="postgres://b42488a47caa0312027854de6855e887a1fb5f004dcf758f128a4ac6e41c40a6:sk_JX-J3bCnDFJYAtzVzCpk9@db.prisma.io:5432/?sslmode=require"
+
+# Reset the database and apply schema
+npx prisma migrate reset --force
+
+# This will recreate all tables and run the seed automatically
+```
 
 ### Database Connection Issues
 - Ensure `DATABASE_URL` is correctly set in Vercel environment variables

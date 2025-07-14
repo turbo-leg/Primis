@@ -24,7 +24,6 @@ export function Navbar() {
     { name: t('navigation.home'), href: '/', icon: BookOpenIcon },
     { name: t('navigation.courses'), href: '/courses', icon: BookOpenIcon },
     { name: t('navigation.schedule'), href: '/schedule', icon: CalendarDaysIcon },
-    { name: t('navigation.about'), href: '/about', icon: UserGroupIcon },
     { name: t('navigation.contact'), href: '/contact', icon: DocumentTextIcon },
   ]
 

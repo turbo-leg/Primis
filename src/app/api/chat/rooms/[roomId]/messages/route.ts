@@ -16,6 +16,38 @@ export async function GET(
 
     const { roomId } = await params
 
+    // Check if user has access to this chat room
+    const chatRoom = await prisma.chatRoom.findUnique({
+      where: { id: roomId },
+      include: {
+        course: {
+          include: {
+            enrollments: {
+              where: {
+                userId: session.user.id,
+                status: 'ACTIVE'
+              }
+            }
+          }
+        }
+      }
+    })
+
+    if (!chatRoom) {
+      return NextResponse.json({ error: 'Chat room not found' }, { status: 404 })
+    }
+
+    // Check access permissions
+    const hasAccess = 
+      chatRoom.isPublic || 
+      session.user.role === 'ADMIN' || 
+      session.user.role === 'INSTRUCTOR' ||
+      (chatRoom.course && chatRoom.course.enrollments.length > 0)
+
+    if (!hasAccess) {
+      return NextResponse.json({ error: 'Access denied' }, { status: 403 })
+    }
+
     const messages = await prisma.chatMessage.findMany({
       where: {
         chatRoomId: roomId
