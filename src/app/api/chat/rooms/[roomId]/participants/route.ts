@@ -13,7 +13,7 @@ interface Participant {
 
 export async function GET(
   request: NextRequest,
-  { params }: { params: { roomId: string } }
+  { params }: { params: Promise<{ roomId: string }> }
 ) {
   try {
     const session = await getServerSession(authOptions)
@@ -22,7 +22,7 @@ export async function GET(
       return NextResponse.json({ error: 'Unauthorized' }, { status: 401 })
     }
 
-    const { roomId } = params
+    const { roomId } = await params
 
     // Check if the user has access to this chat room
     const chatRoom = await prisma.chatRoom.findUnique({

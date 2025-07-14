@@ -8,7 +8,6 @@ import {
   ChatBubbleLeftEllipsisIcon,
   PaperAirplaneIcon,
   UserCircleIcon,
-  InformationCircleIcon,
   XMarkIcon,
   TrashIcon
 } from '@heroicons/react/24/outline'
