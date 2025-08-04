@@ -1,0 +1,235 @@
+{
+  "common": {
+    "loading": "Loading...",
+    "error": "Error",
+    "save": "Save",
+    "cancel": "Cancel",
+    "edit": "Edit",
+    "delete": "Delete",
+    "close": "Close",
+    "back": "Back",
+    "next": "Next",
+    "previous": "Previous",
+    "search": "Search",
+    "filter": "Filter",
+    "all": "All",
+    "none": "None",
+    "yes": "Yes",
+    "no": "No"
+  },
+  "nav": {
+    "home": "Home",
+    "about": "About Us",
+    "courses": "Courses",
+    "contact": "Contact",
+    "dashboard": "Dashboard",
+    "profile": "Profile",
+    "chat": "Chat",
+    "virtualClassroom": "Virtual Classroom",
+    "documents": "Documents",
+    "schedule": "Schedule",
+    "notifications": "Notifications",
+    "signIn": "Sign In",
+    "signOut": "Sign Out",
+    "signUp": "Sign Up"
+  },
+  "home": {
+    "heroTitle": "Transform Your Future",
+    "heroSubtitle": "Comprehensive college prep courses designed to help you achieve your academic dreams and secure admission to top universities worldwide.",
+    "getStarted": "Get Started Today",
+    "learnMore": "Learn More",
+    "ourImpact": "Our Impact",
+    "impactSubtitle": "Real results from students who transformed their futures with our comprehensive programs.",
+    "studentsServed": "Students Served",
+    "successRate": "Success Rate",
+    "pointImprovement": "Average Point Improvement",
+    "yearsExperience": "Years of Excellence",
+    "trustedBy": "Trusted by thousands of students worldwide",
+    "joinSuccessStory": "Join Our Success Story",
+    "getInTouch": "Get In Touch",
+    "getInTouchSubtitle": "Ready to start your journey? Contact us today for a free consultation.",
+    "contactButton": "Contact Us Now",
+    "freeConsultation": "Free consultation available",
+    "readyQuestion": "Ready to Transform Your Future?",
+    "discoverValues": "Discover Our Values",
+    "visitCampus": "Visit our campus for personalized guidance"
+  },
+  "about": {
+    "title": "About Primis EduCare",
+    "subtitle": "Empowering students worldwide to achieve their academic dreams through innovative education and personalized support.",
+    "mission": {
+      "title": "Our Mission",
+      "description": "To provide world-class college preparation education that empowers students to reach their full potential and gain admission to their dream universities.",
+      "global": {
+        "title": "Global Reach",
+        "desc": "Serving students from over 50 countries with our comprehensive online and in-person programs."
+      },
+      "excellence": {
+        "title": "Academic Excellence",
+        "desc": "Maintaining the highest standards in education with expert instructors and proven methodologies."
+      },
+      "innovation": {
+        "title": "Innovation",
+        "desc": "Leveraging cutting-edge technology and modern teaching methods for optimal learning outcomes."
+      }
+    },
+    "values": {
+      "title": "Our Core Values",
+      "subtitle": "The principles that guide everything we do in supporting student success.",
+      "excellence": {
+        "title": "Excellence",
+        "desc": "We maintain the highest standards in education, ensuring every student receives world-class instruction and support."
+      },
+      "personalized": {
+        "title": "Personalized Learning",
+        "desc": "Every student is unique. We tailor our approach to match individual learning styles and goals."
+      },
+      "innovation": {
+        "title": "Innovation",
+        "desc": "We embrace new technologies and methodologies to enhance the learning experience."
+      },
+      "community": {
+        "title": "Community",
+        "desc": "Building a supportive community where students, instructors, and families work together toward success."
+      }
+    },
+    "team": {
+      "title": "Meet Our Team",
+      "subtitle": "Dedicated professionals committed to your academic success.",
+      "sarah": {
+        "name": "Dr. Sarah Johnson",
+        "role": "Chief Academic Officer",
+        "bio": "Former Harvard admissions officer with 15+ years of experience in college prep education."
+      },
+      "michael": {
+        "name": "Prof. Michael Chen",
+        "role": "SAT/ACT Director",
+        "bio": "Expert test prep instructor with a proven track record of helping students achieve top scores."
+      },
+      "emily": {
+        "name": "Emily Rodriguez",
+        "role": "Student Success Manager",
+        "bio": "Passionate educator focused on supporting students throughout their academic journey."
+      },
+      "david": {
+        "name": "David Kim",
+        "role": "Technology Director",
+        "bio": "Innovation leader ensuring our platform delivers the best possible learning experience."
+      }
+    },
+    "history": {
+      "title": "Our Journey",
+      "foundation": "Founded with a mission to democratize access to quality college preparation education worldwide.",
+      "expansion": "Expanded our program offerings and launched our innovative online learning platform.",
+      "innovation": "Introduced AI-powered personalized learning and virtual classroom technologies.",
+      "recognition": "Recognized as a leading college prep institution with over 10,000 successful students.",
+      "future": "Continuing to innovate and expand our global reach to help even more students succeed."
+    },
+    "cta": {
+      "title": "Ready to Start Your Journey?",
+      "subtitle": "Join thousands of students who have transformed their futures with Primis EduCare.",
+      "contact": "Contact Us Today",
+      "courses": "Browse Courses"
+    },
+    "visionTitle": "Our Vision",
+    "visionDesc": "To be the world's leading college preparation platform, empowering students globally to achieve their academic dreams."
+  },
+  "contact": {
+    "title": "Contact Us",
+    "subtitle": "Get in touch with our team for personalized guidance and support on your academic journey."
+  },
+  "virtualClassroom": {
+    "title": "Virtual Classroom",
+    "subtitle": "Join live interactive classes with expert instructors from anywhere in the world.",
+    "startMeeting": "Start Meeting",
+    "shareScreen": "Share Screen",
+    "openChat": "Open Chat",
+    "settings": "Settings",
+    "start": "Start",
+    "share": "Share",
+    "open": "Open",
+    "configure": "Configure",
+    "activeRooms": "Active Rooms",
+    "scheduledRooms": "Scheduled Rooms",
+    "techRequirements": "Technical Requirements"
+  },
+  "chat": {
+    "title": "Chat & Discussion",
+    "subtitle": "Connect with instructors and fellow students in real-time discussions.",
+    "rooms": "Chat Rooms",
+    "searchRooms": "Search rooms...",
+    "selectRoom": "Select a chat room",
+    "selectRoomDesc": "Choose a room from the sidebar to start chatting",
+    "typeMessage": "Type your message...",
+    "onlineUsers": "Online Users",
+    "noRooms": "No chat rooms",
+    "noRoomsDesc": "Chat rooms will be created when courses are available.",
+    "loadingMessages": "Loading messages...",
+    "noMessages": "No messages yet. Start the conversation!",
+    "participants": "Participants",
+    "deleteMessage": "Delete Message",
+    "deleteMessageConfirm": "Are you sure you want to delete this message? This action cannot be undone.",
+    "messageDeleted": "Message deleted",
+    "failedToDelete": "Failed to delete message",
+    "failedToSend": "Failed to send message",
+    "admin": "Admin",
+    "instructor": "Instructor"
+  },
+  "profile": {
+    "title": "User Profile",
+    "subtitle": "Manage your account settings and view your academic progress.",
+    "basicInfo": "Basic Information",
+    "edit": "Edit Profile",
+    "save": "Save Changes",
+    "cancel": "Cancel",
+    "name": "Full Name",
+    "phone": "Phone Number",
+    "bio": "Bio",
+    "location": "Location",
+    "preferences": "Preferences",
+    "language": "Language",
+    "emailNotifications": "Email Notifications",
+    "theme": "Theme",
+    "studyStats": "Study Statistics",
+    "coursesEnrolled": "Courses Enrolled",
+    "coursesCompleted": "Courses Completed",
+    "studyHours": "Study Hours",
+    "averageGrade": "Average Grade",
+    "quickActions": "Quick Actions",
+    "changePassword": "Change Password",
+    "downloadCertificates": "Download Certificates",
+    "exportData": "Export Data",
+    "deleteAccount": "Delete Account"
+  },
+  "dashboard": {
+    "title": "Dashboard",
+    "welcome": "Welcome",
+    "subtitle": "Your personalized learning hub with everything you need to succeed.",
+    "activeCourses": "Active Courses",
+    "todayClasses": "Today's Classes",
+    "unreadMessages": "Unread Messages",
+    "attendance": "Attendance Rate",
+    "todaySchedule": "Today's Schedule",
+    "quickActions": "Quick Actions",
+    "recentActivity": "Recent Activity",
+    "support": "Support",
+    "attendedClass": "Attended class",
+    "downloadedDocument": "Downloaded document",
+    "joinedChat": "Joined chat room",
+    "viewFullSchedule": "View Full Schedule"
+  },
+  "courses": {
+    "title": "Courses"
+  },
+  "schedule": {
+    "title": "Schedule",
+    "gridView": "Grid View",
+    "listView": "List View"
+  },
+  "notifications": {
+    "title": "Notifications",
+    "markAsRead": "Mark as Read",
+    "markAllRead": "Mark All as Read",
+    "deleteAll": "Delete All"
+  }
+}

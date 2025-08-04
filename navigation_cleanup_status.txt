@@ -1,0 +1,15 @@
+// Based on the search results, it seems the virtual classroom references may have already been removed
+// from the Navigation component, or they might be in a different location.
+
+// Let me check if the mobile menu virtual classroom reference has already been cleaned up
+// or if it exists in a different navigation component.
+
+// If you're still seeing virtual classroom references in the mobile menu,
+// they might be in one of these potential locations:
+// 1. A different navigation component file
+// 2. A mobile-specific navigation component
+// 3. Within a layout component
+// 4. In the main app layout
+
+// Could you please specify exactly where you're seeing the virtual classroom reference?
+// This will help me locate and remove it more accurately.
