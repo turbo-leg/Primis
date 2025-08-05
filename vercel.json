@@ -5,8 +5,7 @@
     }
   },
   "env": {
-    "NODE_ENV": "production"
-  },
-  "buildCommand": "npm run build",
-  "installCommand": "npm install --no-optional"
+    "NODE_ENV": "production",
+    "NEXT_TELEMETRY_DISABLED": "1"
+  }
 }
